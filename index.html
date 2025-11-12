@@ -105,16 +105,16 @@
   </header>
 
   <section id="search-container">
-    <input type="text" id="searchInput" placeholder="e.g. chicken, pasta, curry" /> //placeholders put a value there to show what can be inputed
-    <button id="searchBtn">Search</button> // this is where the search button is pressed 
+    <input type="text" id="searchInput" placeholder="e.g. chicken, pasta, curry" />
+    <button id="searchBtn">Search</button>
   </section>
 
   <section id="results"></section>
 
   <script>
-    const searchBtn = document.getElementById("searchBtn"); //search 
-    const searchInput = document.getElementById("searchInput"); // takes what is inputed and searches it
-    const resultsDiv = document.getElementById("results");  // provides final results or what is found 
+    const searchBtn = document.getElementById("searchBtn");
+    const searchInput = document.getElementById("searchInput");
+    const resultsDiv = document.getElementById("results");
 
     searchBtn.addEventListener("click", () => {
       const query = searchInput.value.trim();
@@ -125,7 +125,7 @@
         return;
       }
 
-      fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`) //API used when the input is entered and fetch() grabs the url for the recipe 
+      fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`)
         .then(response => {
           if (!response.ok) {
             throw new Error("Network error!");
@@ -134,7 +134,7 @@
         })
         .then(data => {
           if (!data.meals) {
-            resultsDiv.innerHTML = "<p class='error'>No recipes found! Try another recipe 🍽️</p>";
+            resultsDiv.innerHTML = "<p class='error'>No recipes found! Try another keyword 🍽️</p>";
             return;
           }
 
